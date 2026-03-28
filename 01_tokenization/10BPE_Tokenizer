@@ -1,0 +1,53 @@
+import re
+import importlib.metadata  # Used to check installed package versions
+import tiktoken            # OpenAI tokenizer used in GPT models
+
+# =========================
+# STEP 1: CHECK VERSION
+# =========================
+
+# Print installed version of tiktoken
+print("tiktoken version: ", importlib.metadata.version("tiktoken"))
+
+
+# =========================
+# STEP 2: LOAD TOKENIZER
+# =========================
+
+# Load GPT-2 tokenizer encoding
+tokenizer = tiktoken.get_encoding("gpt2")
+
+
+# =========================
+# STEP 3: INPUT TEXT
+# =========================
+
+# Example text:
+# - normal sentence
+# - includes special token <|endoftext|>
+# - includes unknown word (someunknownPlace)
+text = (
+    "Hello, do you like tea? <|endoftext|> In the sunlit terraces "
+    "of someunknownPlace"
+)
+
+
+# =========================
+# STEP 4: ENCODE (TEXT → TOKEN IDS)
+# =========================
+
+# Convert text into token IDs
+# allowed_special ensures <|endoftext|> is treated as a special token
+integers = tokenizer.encode(text, allowed_special={"<|endoftext|>"})
+
+print(integers)
+
+
+# =========================
+# STEP 5: DECODE (TOKEN IDS → TEXT)
+# =========================
+
+# Convert token IDs back into readable text
+strings = tokenizer.decode(integers)
+
+print(strings)
