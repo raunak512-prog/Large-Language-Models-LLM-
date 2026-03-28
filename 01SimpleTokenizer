@@ -1,0 +1,17 @@
+# Tokenization
+
+## What is Tokenization?
+Tokenization is the process of converting raw text into smaller units called tokens.
+
+## Types of Tokenization
+- Word Tokenization
+- Character Tokenization
+- Subword Tokenization
+
+## What I Will Implement
+- Simple tokenizer using Python
+- Vocabulary creation
+- Encoding and decoding
+
+## Goal
+To understand how text is converted into numbers before feeding into an LLM.
